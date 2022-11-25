@@ -13,8 +13,9 @@ namespace HoYoDataBaseAPI
     internal class SubtitleManager
     {
         private static string[] Data_Sources = new string[] {
-            "https://raw.githubusercontent.com/HoYoLive/HoYoLiveData/main/database",
-            "https://cdn.jsdelivr.net/gh/HoYoLive/HoYoLiveData@latest/database"};
+            "https://cdn.jsdelivr.net/gh/HoYoLive/HoYoLiveData@latest/database",
+            "https://raw.githubusercontent.com/HoYoLive/HoYoLiveData/main/database"
+            };
 
         private static Uri REPOS_INFO = new Uri("https://api.github.com/repos/HoYoLive/HoYoLiveData");
         private static int UPDATE_TIME = 60 * 60 * 1000;
@@ -28,6 +29,7 @@ namespace HoYoDataBaseAPI
         public SubtitleManager()
         {
             client.DefaultRequestHeaders.Add("user-agent", @"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36 Edg/88.0.705.63");
+            client.Timeout = new TimeSpan(0, 5, 0);
             checkUpdate();
         }
 
